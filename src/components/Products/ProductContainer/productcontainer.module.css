@@ -1,0 +1,32 @@
+.product_container {
+  border: 1px solid gray;
+  border-radius: 12px;
+}
+
+.product_img {
+  object-fit: cover;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.product_information_container {
+    padding: 12px;
+}
+
+.product_title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333333;
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+    width: 300px;
+}
+
+.product_price {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333333;
+    margin: 0;
+    margin-top: 5px;
+}
