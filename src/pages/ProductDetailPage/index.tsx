@@ -9,7 +9,6 @@ const ProductDetailPage = () => {
   const currentProduct = MockData.find(
     (product) => product.id === Number(productId)
   );
-  console.log("id", currentProduct);
   return (
     <div className={styles["main_container"]}>
       <h1>{currentProduct?.name}</h1>

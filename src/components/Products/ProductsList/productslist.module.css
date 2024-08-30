@@ -1,0 +1,21 @@
+.products_list_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: 100%;
+  margin-top: 35px;
+  justify-content: center;
+}
+
+.product_item {
+  width: 27%;
+  cursor: pointer;
+  @media (max-width: 800px) {
+    width: 50%;
+    max-width: 50%;
+  }
+  @media (max-width: 600px) {
+    width: 100%;
+    max-width: 100%;
+  }
+}

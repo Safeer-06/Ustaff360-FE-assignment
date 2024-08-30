@@ -36,70 +36,70 @@ export const MockData: ProductDataDocument[] = [
     imageSrc: ProductTestImageOne
   },
   {
-    id: 2,
+    id: 3,
     name: "Tecnofunk",
     category: "Industry",
     price: 219,
     imageSrc: ProductTestImageTwo
   },
   {
-    id: 3,
+    id: 4,
     name: "Omega",
     category: "Electronics",
     price: 319,
     imageSrc: ProductTestImageTwo
   },
   {
-    id: 4,
+    id: 5,
     name: "Delta",
     category: "Industry",
     price: 619,
     imageSrc: ProductTestImageOne
   },
   {
-    id: 5,
+    id: 6,
     name: "Junction",
     category: "Device",
     price: 1000,
     imageSrc: ProductTestImageThree
   },
   {
-    id: 6,
+    id: 7,
     name: "Tractor",
     category: "Industry",
     price: 100,
     imageSrc: ProductTestImageFour
   },
   {
-    id: 6,
+    id: 8,
     name: "Drilling machine",
     category: "Equipment",
     price: 123,
     imageSrc: ProductTestImageFour
   },
   {
-    id: 7,
+    id: 9,
     name: "Analyzer",
     category: "Industry",
     price: 194,
     imageSrc: ProductTestImageFour
   },
   {
-    id: 8,
+    id: 10,
     name: "Tractor Vehicle",
     category: "Industry",
     price: 195,
     imageSrc: ProductTestImageFour
   },
   {
-    id: 9,
+    id: 11,
     name: "Outlet Device",
     category: "Device",
     price: 191,
     imageSrc: ProductTestImageFour
   },
   {
-    id: 10,
+    id: 12,
     name: "Electrical Device",
     category: "Device",
     price: 900,
