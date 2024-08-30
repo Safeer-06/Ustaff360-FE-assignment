@@ -1,25 +1,34 @@
 import React, { createContext, useState } from "react";
+import { FormData } from "../components/Products/FilterSidebarContainer";
 
 const MyContext = createContext<{
-  count: number;
-  increment: () => void;
+  state: FormData;
+  setStateFunc: (newState: FormData) => void;
 }>({
-  count: 0,
-  increment: () => {},
+  state: {
+    category: "",
+    maxPrice: "",
+    minPrice: "",
+  },
+  setStateFunc: () => {},
 });
 
-function MyProvider({ children }: { children: React.ReactNode }) {
-  const [count, setCount] = useState(0);
+function ContextProvider({ children }: { children: React.ReactNode }) {
+  const [state, setState] = useState<FormData>({
+    category: "",
+    maxPrice: "",
+    minPrice: "",
+  });
 
-  const increment = () => {
-    setCount(count + 1);
+  const setStateFunc = (newState: FormData) => {
+    setState(newState);
   };
 
   return (
-    <MyContext.Provider value={{ count, increment }}>
+    <MyContext.Provider value={{ state, setStateFunc }}>
       {children}
     </MyContext.Provider>
   );
 }
 
-export { MyContext, MyProvider };
+export { MyContext, ContextProvider };

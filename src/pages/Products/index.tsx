@@ -2,11 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../../service/Api";
 import styles from "./productlist.module.css";
 import Loader from "../../components/Loader";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import ProductsList from "../../components/Products/ProductsList";
 import FilterSideBarContainer from "../../components/Products/FilterSidebarContainer";
 import ProductsSearchContainer from "../../components/Products/ProductsSearchContainer";
+import { MyContext } from "../../context/FormStateContext";
 
 const Products = () => {
   const [filterOpen, setFilterOpen] = useState(false);
@@ -18,29 +19,31 @@ const Products = () => {
     queryKey: ["products"],
     queryFn: getProducts,
   });
-  const [formData, setFormData] = useState({
-    category: "",
-    minPrice: "",
-    maxPrice: "",
-  });
+  const { state, setStateFunc } = useContext(MyContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [products, setProducts] = useState(productData || []);
   const noData = !productData || !productData?.length || error;
 
   const handleSubmitFilters = () => {
-    if (!formData.minPrice && formData.maxPrice) {
+    if (!state.minPrice && state.maxPrice) {
       alert("Please provide min price");
-    } else if (!formData.maxPrice && formData.minPrice) {
+    } else if (!state.maxPrice && state.minPrice) {
       alert("Please provide max price");
+    } else if (
+      state.minPrice &&
+      state.maxPrice &&
+      Number(state.maxPrice) < Number(state.minPrice)
+    ) {
+      alert("Max price should be greater than min price");
     } else {
       const filteredProducts = productData?.filter((product) => {
-        if (formData.category && product.category !== formData.category) {
+        if (state.category && product.category !== state.category) {
           return false;
         }
-        if (formData.minPrice && product.price < Number(formData.minPrice)) {
+        if (state.minPrice && product.price < Number(state.minPrice)) {
           return false;
         }
-        if (formData.maxPrice && product.price > Number(formData.maxPrice)) {
+        if (state.maxPrice && product.price > Number(state.maxPrice)) {
           return false;
         }
 
@@ -51,6 +54,7 @@ const Products = () => {
     }
   };
 
+  console.log("test: ", state);
   useEffect(() => {
     if (searchTerm) {
       const filterredProducts = products?.filter((product) => {
@@ -74,8 +78,8 @@ const Products = () => {
         placement="left"
       >
         <FilterSideBarContainer
-          formData={formData}
-          setFormData={setFormData}
+          formData={state}
+          setFormData={setStateFunc}
           handleSubmitFilters={handleSubmitFilters}
         />
       </Sidebar>

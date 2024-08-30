@@ -17,6 +17,7 @@ const ProductsList = ({
             key={product.id}
             className={styles["product_item"]}
             onClick={() => navigate(`/product-detail-page/${product.id}`)}
+            data-testid="product"
           >
             <ProductContainer product={product} />
           </div>

@@ -4,7 +4,7 @@ import Input from "../../Input";
 import Select from "../../Select";
 import styles from "./filtersidebarcontainer.module.css";
 
-interface FormData {
+export interface FormData {
   category: string;
   minPrice: string;
   maxPrice: string;
@@ -16,7 +16,7 @@ const FilterSideBarContainer = ({
   handleSubmitFilters,
 }: {
   formData: FormData;
-  setFormData: React.Dispatch<React.SetStateAction<FormData>>;
+  setFormData: (newState: FormData) => void;
   handleSubmitFilters: () => void;
 }) => {
   const categories = CategoryOptions.map((category) => {
@@ -27,7 +27,10 @@ const FilterSideBarContainer = ({
   });
 
   return (
-    <div className={styles["filter_sidebar_container"]}>
+    <div
+      className={styles["filter_sidebar_container"]}
+      data-testid="filter-sidebar"
+    >
       <h1>Filters</h1>
       <div>
         <h3>Category</h3>
